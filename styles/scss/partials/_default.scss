@@ -1,0 +1,192 @@
+@mixin for-small-phones {
+  @media (max-width: 419px) { @content; }
+}
+@mixin for-phone-only {
+  @media (max-width: 575px) { @content; }
+}
+@mixin for-tablet-portrait-down {
+  @media (max-width: 767px) { @content; }
+}
+@mixin for-tablet-landscape-down {
+  @media (max-width: 991px) { @content; }
+}
+@mixin for-desktop-down {
+  @media (max-width: 1199px) { @content; }
+}
+@mixin for-bigger-phones {
+  @media (min-width: 420px) { @content; }
+}
+@mixin not-for-phones {
+  @media (min-width: 576px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 768px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 992px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+
+$theme-menu-color: #171717;
+$theme-text-color: #191919;
+$theme-text-white: #ffffff;
+$theme-link-color: #939393;
+$theme-bg-orange:  #f68938;
+
+@font-face {
+    font-family: "Exo";
+    font-weight: 400;
+    font-style: normal;
+    src: url('./fonts/Exo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Exo";
+    font-weight: 200;
+    font-style: normal;
+    src: url('./fonts/Exo-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Exo";
+    font-weight: 700;
+    font-style: normal;
+    src: url('./fonts/Exo-Bold.ttf') format('truetype');
+}
+
+* {
+    font-family: Exo, sans-serif;
+    font-style: normal;
+    transition: all 0.5s ease;
+}
+
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    transition: all 0.5s ease;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    text-align: center;
+    @include not-for-phones {
+        font-size: 1.8rem;
+    }
+    @include for-tablet-portrait-up {
+        text-align: left;
+        font-size: 2rem;
+    }
+    @include for-tablet-landscape-up {
+        font-size: 2.5rem;
+    }
+    @include for-desktop-up {
+        font-size: 3rem;
+    }
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h6 {
+    display: block;
+    clear: both;
+    width: 100%;
+    height: 0;
+    font-size: 0px;
+    background-color: transparent;
+    color: transparent;
+    margin: 0 0 10px 0;
+    padding: 0;
+    border: none;
+    &#home {
+        margin: 0;
+    }
+}
+
+p {
+    font-size: 15px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number],input[type=date] {
+  -moz-appearance: textfield;
+}
+
+%slider-in-view-mixin {
+    opacity: 1;
+    -moz-transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+}
+
+@mixin transition-mixin($key, $time, $type) {
+    opacity: 0;
+    -moz-transition: $key $time $type;
+    -webkit-transition: $key $time $type;
+    -o-transition: $key $time $type;
+    transition: $key $time $type; 
+}
+
+.animation-element {
+    &.slide-left {
+        -moz-transform: translate3d(-100px, 0px, 0px);
+        -webkit-transform: translate3d(-100px, 0px, 0px);
+        -o-transform: translate(-100px, 0px);
+        -ms-transform: translate(-100px, 0px);
+        transform: translate3d(-100px, 0px, 0px);                
+        @include transition-mixin(all, 500ms, linear);
+        &.in-view {
+            @extend %slider-in-view-mixin;
+            &.low-slide {
+                //@include transition-mixin(all, 700ms, linear);
+            }
+        }
+    } 
+    &.slide-down {
+        transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+        padding: 5em 3em;
+        &.in-view {
+            transition: all 500ms ease;
+        }
+    }
+    &.fade-in {
+        opacity: 0;
+        &.in-view {
+            opacity: 1;
+            -moz-transition: opacity 1.5s ease-in-out;
+            -o-transition: opacity 1.5s ease-in-out;
+            -webkit-transition: opacity 1.5s ease-in-out;
+            transition: opacity 1.5s ease-in-out; 
+            &.low-fade {
+                 -moz-transition: opacity 2.5s ease-in-out;
+                -o-transition: opacity 2.5s ease-in-out;
+                -webkit-transition: opacity 2.5s ease-in-out;
+                transition: opacity 2.5s ease-in-out;                
+            }
+        }
+    }
+}

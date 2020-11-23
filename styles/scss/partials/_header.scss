@@ -1,0 +1,246 @@
+// Header styles //
+
+header {
+    position: fixed;
+    width: 100%;
+    padding: 12px 0;
+    background-color: transparent;
+    //background-image: url("../images/hero-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 999;
+    &.sliding {
+        background-color: #fff;
+        height: 60px;
+        padding-top: 0;
+        .navbar-brand {
+            padding-top: 10px;
+            img {
+                max-width: 60%;
+                @include for-phone-only {
+                    //max-width: 100%;
+                }              
+            }
+        }
+        .navbar-nav {
+            .nav-item {
+                .nav-link {
+                    padding: 1rem;
+                    @include for-tablet-portrait-up {
+                        @include for-tablet-landscape-down {
+                            padding: 1rem 0.5rem;
+                        }                    
+                    }                    
+                }                
+            }    
+        }
+        .navbar-collapse {
+            @include not-for-phones {
+                @include for-tablet-portrait-down {
+                    top: 60px;
+                    width: 100vw;
+                }
+            }
+            &.show {
+                left: -51.4vw;
+                top: 60px;
+                @include for-small-phones {
+                    left: -51.7vw;
+                    width: 100vw;
+                    top: 60px;
+                }
+            }
+        }
+    }
+    .navbar-brand {
+        padding-top: 1rem;
+        a {
+            display: block;
+            max-width: 80%;            
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
+    }
+    .navbar {
+        padding-top: 0;   
+        justify-content: flex-end;
+        @include for-tablet-portrait-up {
+            justify-content: space-between;            
+        }
+        @include for-tablet-landscape-up {
+         //   align-self: center;
+        }
+    }
+    .navbar-toggler { 
+        marging: 0 auto; 
+    }
+    .navbar-collapse {
+        @include for-tablet-portrait-down {
+            position: absolute;
+            top: 70px;
+            width: 92vw;
+            left: -100vw;
+            overflow-x: hidden;
+            transition: 0.5s;
+            z-index: 1;
+            background-color: #FFF;
+            &.show {
+                left: -50vw;
+                transition: 0.5s;
+            }
+        }
+        @include for-bigger-phones {
+            top: 80px;
+            width: 100vw;
+            &.show {
+                left: -51vw;
+                transition: 0.5s;
+            }
+            
+        }
+        @include not-for-phones {
+            top: 87px;
+            width: 98vw;
+        }
+        @include for-small-phones {
+            left: -52vw;
+            width: 100vw;
+            top: 60px;
+        }
+        @include for-tablet-portrait-up {
+            align-self: flex-start;
+            justify-content: flex-end;
+            width: 96vw;
+        }
+    }
+    .navbar-nav {
+        .nav-item {
+            .nav-link {
+                padding: 1.3rem 1rem;
+                font-size: 14px;
+                font-weight: 400;
+                color: $theme-menu-color;
+                text-transform: uppercase;
+                border-top: 2px solid transparent;
+                &:hover, &:focus, &:active {
+                    border-top: 2px solid $theme-bg-orange;               
+                }
+                @include for-tablet-portrait-up {
+                    @include for-tablet-landscape-down {
+                        font-size: 12px;
+                        padding: 1.3rem 0.5rem;
+                    }                    
+                }
+            } 
+            @include for-tablet-portrait-down {
+                border-top: 1px solid $theme-menu-color;
+                &:last-of-type {
+                     border-bottom: 1px solid $theme-menu-color;
+                }
+            }
+        }
+    }
+}
+
+html:not([data-scroll='0']) {
+    
+    body {
+      padding-top: 0px;
+    }
+    
+    header {
+        position: fixed;
+        background-color: #fff;
+        height: 60px;
+        padding-top: 5px;
+        background-color: #fff;
+        box-shadow: 0 0 .5em rgba(0, 0, 0, .5);
+        transition: all 0.5s ease;
+        .navbar-brand {
+            padding-top: 10px;
+            img {
+                max-width: 60%;
+                @include for-phone-only {
+                    //max-width: 100%;
+                }              
+            }
+        }
+        .navbar-nav {
+            .nav-item {
+                .nav-link {
+                    padding: 1rem;
+                    @include for-tablet-portrait-up {
+                        @include for-tablet-landscape-down {
+                            padding: 1rem 0.5rem;
+                        }                    
+                    }                    
+                }                
+            }    
+        }
+        .navbar-collapse {
+            @include not-for-phones {
+                @include for-tablet-portrait-down {
+                    top: 60px;
+                    width: 100vw;
+                }
+            }
+            &.show {
+                left: -51.4vw;
+                top: 60px;
+                @include for-small-phones {
+                    left: -51.7vw;
+                    width: 100vw;
+                    top: 60px;
+                }
+            }
+        }
+    }
+    
+}
+
+
+#hero-section {
+    background-image: url("../images/hero-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;   
+    width: 100vw;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .container-md {
+        flex-direction: column;
+        @include for-tablet-portrait-down {
+            align-self: baseline;
+            margin-top: 2rem;
+        }
+        @include for-tablet-portrait-up {
+            flex-direction: row;
+        }
+    }
+    .hero-text {
+        align-self: center;
+        @include for-tablet-portrait-down {
+            flex: 0 0 35%;
+        }
+    }
+    picture {
+        img {
+            width: 100%;
+            background: transparent;
+            @include for-tablet-portrait-down {
+                max-width: 60%;
+                margin: 0 auto;
+                display: block;                
+            }
+            @include for-phone-only {
+                max-width: 80%;
+            }
+        }
+        source {
+            background: transparent;
+        }
+    }
+}

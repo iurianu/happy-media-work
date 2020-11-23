@@ -1,0 +1,117 @@
+// Footer styles //
+footer {
+    width: 100vw;
+    background-color: #f3f3f3;
+    .container-md {
+        @include for-small-phones {
+            padding: 0;
+            &.d-flex {
+                flex-direction: column;
+                [class*=col-] {
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    max-height: 80px;
+                    .happy-media-data {
+                        display: flex;
+                        align-items: flex-start;
+                        align-content: space-between;
+                        margin-top: 20px;
+                        figcaption {
+                            text-align: right;
+                            padding-right: 5px;
+                        }
+                        a {
+                            text-align: left;
+                        }
+                        img {
+                            float: none;
+                            margin-left: 5px;
+                        }
+                    }
+                } 
+            } 
+        }
+    }
+}
+.footer-logo {
+    width: 220px;
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.happy-media-data {
+    width: 100%;
+    float: left;
+    a {
+        display: block;
+        max-width: 100%;
+        @include for-phone-only {
+            float: left;
+            width: 100%;
+        }
+    }
+    img {
+        float: right;
+        width: 70px;
+        height: auto;
+        @include for-phone-only {
+            margin-right: calc(75% - 70px);
+        }
+    }
+    figcaption {
+        float: left;
+        text-align: right;
+        width: calc(100% - 90px);
+        line-height: 1.3rem;
+        color: $theme-link-color;
+        @include for-tablet-portrait-down {
+            font-size: 14px;
+        }        
+        @include for-phone-only {
+            width: 100%;
+            padding-bottom: 5px;
+            font-size: 12px;
+            text-align: center;            
+        }
+    }
+    @include for-tablet-portrait-down {
+        @include not-for-phones {
+            padding-top: 25px;
+        }        
+    }
+}
+
+#terms-section {
+    display: inline-block;
+    list-style: none;
+    padding-top: 10px;
+    padding-left: 0;
+    li {
+        float: left;
+        display: inline;
+        font-size: 15px;
+        padding-right: 12px;
+        border-right: 1px solid $theme-link-color;
+        margin-right: 12px;
+        a {
+            font: inherit;
+            color: $theme-link-color;
+        }
+        &:last-of-type {
+            padding-right: 0;
+            margin-right: 0;
+            border: none;
+        }
+        @include for-tablet-landscape-down {
+            display: block;
+            float: none;
+            line-height: 25px;
+            border: none;
+        }
+        @include for-phone-only {
+            font-size: 12px;
+        }
+    }
+}

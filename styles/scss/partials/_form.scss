@@ -1,0 +1,301 @@
+%form-mix-style {
+    color: $theme-menu-color;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;   
+    border-bottom: 1px solid $theme-bg-orange;
+    &::placeholder {
+        color: $theme-menu-color;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0 #FFF;
+    }
+}
+
+#contact-form {
+    //padding-left: 80px;
+    @include for-tablet-portrait-down {
+        padding-left: 15px;
+    }
+    h2 {
+        @include for-tablet-portrait-down {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+    }
+    form {
+        width: 100%;
+        align-items: center;
+        .form-control {
+            float: left;
+            width: 49%;
+            height: 85px;
+            padding-left: 0;                
+            &:nth-of-type(odd) {
+                margin-right: 1%;
+                @include for-tablet-portrait-down {
+                    margin-right: 0;
+                }
+            }
+            &:nth-of-type(even) {
+                margin-left: 1%;
+                @include for-tablet-portrait-down {
+                    margin-left: 0;
+                }
+            }
+            @include for-tablet-portrait-down {
+                width: 100%;
+                margin: 0 auto;
+            }
+            @extend %form-mix-style;
+        }
+        select {
+            position: relative;
+            caret-color: $theme-bg-orange;
+            background-image: url('../images/caret-down-orange.png');
+            background-position: bottom 30px right 10px;
+            background-repeat: no-repeat;
+            background-size: 15px 10px;
+            &::-ms-expand {
+                 display: none;
+            }
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }                  
+        .form-check {
+            padding-left: 35px;
+            input[type=checkbox] {
+                width: 18px;
+                height: 18px;
+            }
+            label {
+                padding-left: 5px;
+                font-size: 13px;
+                color: $theme-link-color;
+            }
+            @include for-tablet-portrait-down {
+                padding-left: 50px;
+            }
+        }
+        .form-cta {
+            text-align: right;
+            padding-right: 25px;
+            @include for-tablet-portrait-down {
+                padding-top: 15px;
+                padding-right: 0;
+                text-align: center;
+            }
+        }
+        input {
+            &[name=telefon] {
+                width: 48%;
+                @include for-tablet-portrait-down {
+                    width: 100%;
+                }
+            }
+            &[name=invitati] {
+                width: 12%;
+                @include for-tablet-landscape-down {
+                    width: 15%;
+                }
+                @include for-tablet-portrait-down {
+                    width: 100%;
+                }
+            }
+            &[name=data] {
+                width: 35%;
+                margin-left: 1%;
+                @include for-tablet-landscape-down {
+                    width: 32%;
+                }
+                @include for-tablet-portrait-down {
+                    width: 100%;
+                    margin-left: 0;
+                }
+            }
+            &[type=submit] {
+                width: 210px;
+                height: 60px;
+                background-color: $theme-bg-orange;
+                border-radius: 0;
+                color: #FFF;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+#package-select-field {
+    h4 {
+        &#own-set-select {
+            position: relative;
+            width: 100%;
+            background-color: $theme-bg-orange;
+            color: #FFF;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+            line-height: 2.5rem;
+            cursor: pointer;
+            &:after {
+                position: absolute;
+                content: "";
+                top: 14px;
+                right: 10px;
+                width: 15px;
+                height: 10px;
+                background-image: url(../images/caret-down-white.png);
+                background-repeat: no-repeat;
+                background-size: 12px 7px;
+                background-position: top right;
+            }
+        }
+    }
+    #setup-creator {
+        width: 100%;
+        flex-wrap: wrap;
+        flex-direction: row;
+        .col-12 {
+            float: left;
+        }
+        legend {
+            float: left;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        input {
+            &[type=number] {
+                float: left;
+                clear: left;
+                width: 25px;
+                height: 25px;
+                border: 1px solid #b8b8b8;
+                padding: 0 0 0 7px;
+                margin-left: 0;
+                margin-right: 5px;
+                margin-top: 5px;
+                &:focus {
+                    border-color: $theme-bg-orange;
+                    color: $theme-bg-orange;
+                }
+            }
+        }
+        label {
+            float: left;
+            margin-top: 5px;
+        }
+    }
+}
+
+.custom-select {
+    position: relative;
+    padding: 0;
+    color: $theme-bg-orange;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid $theme-bg-orange;
+    margin-bottom: 3rem;
+    select {
+        display: none; /*hide original SELECT element:*/
+    }
+    &+ p {
+        width: 100%;
+        text-align: center;
+    }    
+}
+
+%div-mix-selected { /*style the items (options), including the selected item:*/
+    color: $theme-bg-orange;
+    padding: 8px 16px;
+    border-bottom: 1px solid $theme-bg-orange;
+    cursor: pointer;
+    user-select: none;
+}
+
+.select-selected {
+    background-color: #f3f3f3;
+    @extend %div-mix-selected;
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 1.5rem;
+    &:after { /*style the arrow inside the select element:*/
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 15px;
+        height: 10px;
+        background-image: url(../images/caret-down-orange.png);
+        background-repeat: no-repeat;
+        background-size: 15px 10px;
+        background-position: top right;
+    }
+    &.select-arrow-active {
+        &:after {  /*point the arrow upwards when the select box is open (active):*/
+                    //border-color: transparent transparent $theme-bg-orange transparent;
+                // top: 7px;
+              -moz-transform: rotate(180deg);
+              -ms-transform: rotate(180deg);
+              -o-transform: rotate(180deg);
+              transform: rotate(180deg);
+        }
+    }
+}
+
+.select-items { /*style items (options):*/
+    position: absolute;
+    background-color: #FFF;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    color: $theme-bg-orange;    
+    div {
+        @extend %div-mix-selected;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#lz_overlay_chat {
+    max-width: 85vw !important;
+    max-height: 70vh !important;
+    * {
+        color: $theme-bg-orange;
+    }
+    .lz_chat_header {
+        background-color: $theme-bg-orange;
+        &#lz_chat_state_bar {
+            padding-bottom: 0;
+        }
+    }
+    #lz_chat_overlay_main {
+        #lz_chat_content {
+            
+        }
+    }
+    #lz_overlay_module_chat {
+        border-radius: 10px;
+    }
+    #lz_chat_overlay_text {
+        background-color: $theme-bg-orange !important;
+    }
+}
+
+#lz_overlay_wm {
+    #livezilla_wm {
+        background-color: $theme-bg-orange !important;
+    }
+}
