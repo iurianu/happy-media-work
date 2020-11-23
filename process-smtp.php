@@ -35,7 +35,7 @@ $mail->SMTPAuth = true;
 $mail->Username = 'happy.media.dev@gmail.com';
 
 //Password to use for SMTP authentication
-$mail->Password = 'Happy&PW0';
+$mail->Password = '';
 
 $mail->SMTPSecure = 'tls';
 
